@@ -4,7 +4,8 @@
     {
         static void Main(string[] args)
         {
-
+            Ruler ruler = new Ruler(10);
+            ruler.Run();
         }
     }
     public class Ruler
@@ -14,7 +15,9 @@
         public float Inch
         {
             get { return Centimeter*ONE_INCH; }
-            private set { Centimeter = (int)(value / ONE_INCH); }   
+            // { 2023. 03. 08. private SetInch 함수를 새로 추가함. /Gamma
+            
+            private set { this.SetInch(value); }   
         }
         public Ruler(int cmValue) { Centimeter = cmValue; }
 
@@ -22,7 +25,8 @@
         {
             Console.WriteLine($"{this.Centimeter}cm 는 {this.Inch}inch 입니다.");
         }
-
+        private void SetInch(float inchValue) { Centimeter = (int)(inchValue / ONE_INCH); }
+        // } 2023. 03. 08. private SetInch 함수를 새로 추가함. /Gamma
     }
 
 }
